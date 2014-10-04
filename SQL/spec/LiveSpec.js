@@ -14,7 +14,7 @@ describe("Persistent Node Chat Server", function() {
       user: "root", //added rewt
       // and password.
       password: "",
-      database: "chat"
+      database: "chatter"
     });
     dbConnection.connect();
 
@@ -63,9 +63,9 @@ describe("Persistent Node Chat Server", function() {
 
   it("Should output all messages from the DB", function(done) {
     // Let's insert a message into the db
-    var queryString = "INSERT INTO messages (`userid`, `text`, `roomname`) VALUES (? , ?, ?)";
+    var queryString = "INSERT INTO messages (`userid`, `text`, `roomname`, `createdAt`, `updatedAt`) VALUES (? , ?, ?, ?, ?)";
     // note the delightfully arbitrary user id.
-    var queryArgs = [9001, "Men like you can never change!", "main"];
+    var queryArgs = [9001, "Men like you can never change!", "main", new Date(), new Date()];
     /* TODO - The exact query string and query args to use
      * here depend on the schema you design, so I'll leave
      * them up to you. */
